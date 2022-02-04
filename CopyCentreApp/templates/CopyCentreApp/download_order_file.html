@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+
+<br/>
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+    <!-- Выводим каждое поле формы в отдельном параграфе -->
+    {{ form.as_p }}
+    <button type="submit">Загрузка</button>
+</form>
+
+{% for d in downloadfiles %}
+<p>{{ d.file }}</p>
+
+<!-- <img src="{{ d.file.url }}" width="100px"> -->
+
+<!-- Выводим размер картинки -->
+<!-- <p>Оригинальный размер картинки  {{ d.cover.width }}x{{ d.cover.height }}</p>
+{% endfor %} -->
+
+{% endblock content %}
+
