@@ -18,7 +18,7 @@
         <hr>
         <a href="{% url 'add_to_cart' slug=product.slug %}"><button class="btn btn-danger">Добавить в корзину</button></a>
     </div>
-    <p class="mt-4">Характеристики:</p>
+    <!--<p class="mt-4">Характеристики:</p>
     <table class="table">
       <tbody>
       {% for f_name, f_value in product.get_features.items %}
@@ -28,7 +28,7 @@
         </tr>
       {% endfor %}
       </tbody>
-    </table>
+    </table>-->
 </div>
 
 {% endblock content %}
