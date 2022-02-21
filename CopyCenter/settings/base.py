@@ -12,23 +12,24 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import environ
 
 # import environ
 
 # env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR =  os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-zx(b+6je7+5q7d!w%wl$l^vn5jtc9tdz9+h8w_in04k+vq-m#_"
+env = environ.Env()
+environ.Env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = []
 
@@ -82,33 +83,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'CopyCenter.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': env("POSTGRES_DB"),
-    #     'USER': env("POSTGRES_USER"),
-    #     'PASSWORD': env("POSTGRES_PASSWORD"),
-    #     'HOST': env("POSTGRES_HOST"),
-    #     'PORT': env("POSTGRES_PORT")
-    # }
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "copycenter1",
-        'USER': "bars_ext_edu",
-        'PASSWORD': "bazakleyton1988",
-        'HOST': "localhost",
-    }
-}
 
 
 # Password validation
